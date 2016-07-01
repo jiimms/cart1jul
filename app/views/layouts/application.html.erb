@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cart1jul</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div>
+		<%if user_signed_in?%>
+		<%=link_to "signout",destroy_user_session_path, method: :delete %>
+		
+		
+		<%else%>
+		<%=link_to "new user", new_user_registration_path %>
+		<%=link_to "login", new_user_session_path %>
+		<%end%>
+		<%=link_to "All Products", products_path %>
+	</div>
+<p class="notice"><%= notice %></p>
+      
+<%= yield %>
+
+</body>
+</html>
