@@ -1,3 +1,15 @@
 <h1>Your Cart</h1>
+<%= link_to 'Empty your cart', cart_clear_path%>
+<%total = 0%>
+<%@cart.each do |id, quantity|%>
+	<% product = Product.find_by_id(id)%>
+	<div>
+	Name: <%= product.title%><br>
+	<p>Description: <%= product.desc%></p>
+	<p>Price: <%=number_to_currency(product.price, :unit => 'INR')%></p>
+	<p>Quantity: <%=quantity%></p>
+	</div>
+	<% total += quantity * product.price%>
+<%end%>
 
-
+<p><b>Total cart Value: <%=number_to_currency(total, :unit => 'INR')%></b><p>
